@@ -96,9 +96,10 @@ def aggregate_unit(run_root: Path) -> dict[str, object]:
         test_origins,
         eta_vector,
         error_scale=error_scale,
-        # The validation stream chronologically precedes test.  Carrying its
-        # final weights into test is legal online adaptation and avoids
-        # reinitializing after observing the validation history.
+        # Warm-start from the normalized weights used at the last validation
+        # forecast origin, not from a state flushed after all validation targets
+        # arrive. Pending validation losses are not carried across the split;
+        # only test-origin losses update this state during testing.
         initial_weights=validation_weights[-1],
     )
     np.save(run_root / "predictions" / "gate_validation" / "final_causal_hedge.npy", validation_prediction)
@@ -137,7 +138,8 @@ def aggregate_unit(run_root: Path) -> dict[str, object]:
         "feedback_contract": "delayed_until_target_enters_history",
         "eta_selection_split": "gate_validation",
         "error_scale_source": "gate_validation_only",
-        "test_initial_weights_source": "gate_validation_final_weights",
+        "test_initial_weights_source": "gate_validation_last_forecast_origin_weights",
+        "pending_validation_feedback": "discarded_at_test_boundary",
         "test_selection_use": "none",
         "eta_by_horizon": eta,
         "per_horizon": per_horizon,

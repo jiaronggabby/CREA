@@ -45,6 +45,38 @@ def test_robust_scale_is_finite_for_constant_targets():
     assert np.isfinite(scale).all() and np.all(scale > 0)
 
 
+def test_test_stream_starts_from_last_validation_origin_without_tail_flush():
+    validation = np.zeros((5, 2, 1), dtype=np.float32)
+    experts = [np.zeros_like(validation), np.ones_like(validation)]
+    scale = np.ones((2, 1))
+    _, weights = causal_hedge_mix(validation, experts, np.arange(10, 15),
+                                  [.1, .3], error_scale=scale)
+    changed_tail = validation.copy()
+    changed_tail[-1] = 100
+    # This feedback is not yet eligible at the last validation origin.
+    _, changed_weights = causal_hedge_mix(changed_tail, experts, np.arange(10, 15),
+                                          [.1, .3], error_scale=scale)
+    np.testing.assert_array_equal(weights[-1], changed_weights[-1])
+    test_targets = np.zeros((3, 2, 1), dtype=np.float32)
+    test_experts = [np.zeros_like(test_targets), np.ones_like(test_targets)]
+    _, test_weights = causal_hedge_mix(test_targets, test_experts,
+        np.arange(30, 33), [.1, .3], error_scale=scale, initial_weights=weights[-1])
+    np.testing.assert_allclose(test_weights[0], weights[-1], atol=1e-7)
+    # Test-origin feedback subsequently changes trust, separately for each lead.
+    assert test_weights[1, 1, 0, 0] < test_weights[0, 1, 0, 0]
+    np.testing.assert_array_equal(test_weights[1, :, 1], test_weights[0, :, 1])
+
+
+def test_initialization_interval_uses_complete_paired_summaries():
+    from scripts.msn_initialization_summary import initialization_interval
+
+    result = initialization_interval([1., 2., 3., 4., 5.])
+    assert result['mean'] == 3.
+    np.testing.assert_allclose(result['sd'], np.sqrt(2.5))
+    half = 2.7764451051977934 * np.sqrt(2.5 / 5)
+    np.testing.assert_allclose(result['ci95'], [3-half, 3+half])
+
+
 def test_relation_shift_correction_pairs_the_same_initialization():
     from scripts.msn_shift_control import analyze
 

@@ -38,9 +38,10 @@ crea final-ablations
 crea final-standard-reporting
 crea final-shift --datasets pems04,pems07,metr_la
 crea final-efficiency
+python scripts/msn_initialization_summary.py
 ```
 
-The training command fits the two forecasters and the input-conditioned gate. `aggregate_crea.py` selects the update rates on gate-validation predictions, carries the final validation weights into testing, and evaluates delayed feedback. Completed runs are reused with `--resume`. Use `--datasets pems04 --seed 42` on the training command to run one dataset and initialization; the full result summaries require all five datasets and seeds.
+The training command fits the two forecasters and the input-conditioned gate. `aggregate_crea.py` selects the update rates on gate-validation predictions and starts testing from the normalized weights used at the final validation forecast origin. Pending validation losses are discarded at this boundary; subsequent updates use only test-origin feedback as its targets arrive. Completed runs are reused with `--resume`. Use `--datasets pems04 --seed 42` on the training command to run one dataset and initialization; the full result summaries require all five datasets and seeds.
 
 Outputs are written to `reports/selective_prior_injection_final_v1/`. For a single completed run, aggregation can also be called directly:
 
@@ -68,6 +69,8 @@ The plotting script uses Arial, which must be installed locally. Figure 4 averag
 
 The saved-prediction extraction tools are `scripts/msn_relational_reliance.py` and `scripts/msn_plot_data.py`. Their path arguments allow regenerated predictions and trained checkpoints to be evaluated without retraining.
 
+`scripts/msn_initialization_summary.py` summarizes the manuscript's paired 95% Student-t intervals from five complete initialization-level gains, keeping all datasets and horizons together. It also computes the CREA row for the common three-initialization architecture table and the initialization-level feedback-recovery ratios. These are the manuscript's reported intervals; the temporal block summaries produced by `final-stats` are a separate analysis. The included CSV summaries reproduce the reported intervals and CREA row without prediction arrays or training.
+
 ## Architectural comparisons
 
 The adapters import the original model implementations from an explicitly supplied upstream directory. These implementations are not redistributed here; retain their original licenses.
@@ -76,7 +79,7 @@ The adapters import the original model implementations from an explicitly suppli
 - `scripts/run_external_graph_baseline.py`: [DCRNN](https://github.com/liyaguang/DCRNN), [Graph WaveNet](https://github.com/nnzhan/Graph-WaveNet), [MTGNN](https://github.com/nnzhan/MTGNN), [AGCRN](https://github.com/LeiBAI/AGCRN), and [MegaCRN](https://github.com/deepkashiwa20/MegaCRN).
 - `scripts/run_gc_moe_closest_same_split.py`: [GC-MoE](https://github.com/Ahghaffari/gc_moe).
 
-Run an adapter with `--help` for its data, training, and upstream-path arguments. Architectural references use 1,024 training and validation windows and three initializations; CREA experts use 4,096 training windows per epoch, full validation, and five initializations. These are separate forecasting-system comparisons; the allocation comparisons use the same frozen A/R predictions.
+Run an adapter with `--help` for its data, training, and upstream-path arguments. Architectural references use at most 1,024 training and validation windows; CREA experts use 4,096 training windows per epoch and full validation. The reference table uses seeds 42, 3407, and 101 for every method, including CREA. Main allocation comparisons use all five initializations and the same frozen A/R predictions. All methods share raw series, chronological partitions, horizons, and test origins. CREA uses per-node training normalization; external adapters use global training normalization and model-specific inputs. The architectural table therefore reports results under the stated settings rather than an equal-budget ranking.
 
 ## Citation
 
