@@ -1,0 +1,604 @@
+{
+  "rows": [
+    {
+      "dataset": "pems04",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": -7.4826180934906e-05,
+      "prior_harm_rate_second_half": 0.9798578199052133
+    },
+    {
+      "dataset": "pems04",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9705882352941176,
+      "prior_expert_weight_drop": 0.018990907818078995,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9823529411764705,
+      "prior_expert_weight_drop": 0.018282923847436905,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9794117647058823,
+      "prior_expert_weight_drop": 0.017976153641939163,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9911764705882353,
+      "prior_expert_weight_drop": 0.01894187182188034,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": -0.0012275688350200653,
+      "prior_harm_rate_second_half": 0.9478672985781991
+    },
+    {
+      "dataset": "pems04",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9882352941176471,
+      "prior_expert_weight_drop": 0.01385662704706192,
+      "prior_harm_rate_second_half": 0.9786729857819905
+    },
+    {
+      "dataset": "pems04",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9705882352941176,
+      "prior_expert_weight_drop": 0.011840078979730606,
+      "prior_harm_rate_second_half": 0.9798578199052133
+    },
+    {
+      "dataset": "pems04",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9823529411764705,
+      "prior_expert_weight_drop": 0.012284349650144577,
+      "prior_harm_rate_second_half": 0.976303317535545
+    },
+    {
+      "dataset": "pems04",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9882352941176471,
+      "prior_expert_weight_drop": 0.013526532799005508,
+      "prior_harm_rate_second_half": 0.9786729857819905
+    },
+    {
+      "dataset": "pems04",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.0005646049976348877,
+      "prior_harm_rate_second_half": 0.9751184834123223
+    },
+    {
+      "dataset": "pems04",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9735294117647059,
+      "prior_expert_weight_drop": 0.015555338934063911,
+      "prior_harm_rate_second_half": 0.9988151658767772
+    },
+    {
+      "dataset": "pems04",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9735294117647059,
+      "prior_expert_weight_drop": 0.015463626012206078,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9676470588235294,
+      "prior_expert_weight_drop": 0.016048695892095566,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9882352941176471,
+      "prior_expert_weight_drop": 0.016468839719891548,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": -0.0006263330578804016,
+      "prior_harm_rate_second_half": 0.9786729857819905
+    },
+    {
+      "dataset": "pems04",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9705882352941176,
+      "prior_expert_weight_drop": 0.013121932744979858,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9823529411764705,
+      "prior_expert_weight_drop": 0.012094896286725998,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9882352941176471,
+      "prior_expert_weight_drop": 0.01149417832493782,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9941176470588236,
+      "prior_expert_weight_drop": 0.012001559138298035,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.002847515046596527,
+      "prior_harm_rate_second_half": 0.9893364928909952
+    },
+    {
+      "dataset": "pems04",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9794117647058823,
+      "prior_expert_weight_drop": 0.017095115035772324,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9911764705882353,
+      "prior_expert_weight_drop": 0.017690926790237427,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9823529411764705,
+      "prior_expert_weight_drop": 0.018529202789068222,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems04",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9882352941176471,
+      "prior_expert_weight_drop": 0.018158916383981705,
+      "prior_harm_rate_second_half": 1.0
+    },
+    {
+      "dataset": "pems07",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.00044187697514937174,
+      "prior_harm_rate_second_half": 0.9900426742532006
+    },
+    {
+      "dataset": "pems07",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.371824480369515,
+      "prior_expert_weight_drop": 0.0034891207513787457,
+      "prior_harm_rate_second_half": 0.9950213371266002
+    },
+    {
+      "dataset": "pems07",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.5057736720554272,
+      "prior_expert_weight_drop": 0.004122394289327876,
+      "prior_harm_rate_second_half": 0.9950213371266002
+    },
+    {
+      "dataset": "pems07",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.75635103926097,
+      "prior_expert_weight_drop": 0.005167274481369749,
+      "prior_harm_rate_second_half": 0.9985775248933144
+    },
+    {
+      "dataset": "pems07",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9988452655889145,
+      "prior_expert_weight_drop": 0.007168449521684567,
+      "prior_harm_rate_second_half": 0.9992887624466572
+    },
+    {
+      "dataset": "pems07",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.0014355832977675856,
+      "prior_harm_rate_second_half": 0.9743954480796586
+    },
+    {
+      "dataset": "pems07",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.3695150115473441,
+      "prior_expert_weight_drop": 0.002505458730965724,
+      "prior_harm_rate_second_half": 0.9815078236130867
+    },
+    {
+      "dataset": "pems07",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.5069284064665127,
+      "prior_expert_weight_drop": 0.0034038276360816924,
+      "prior_harm_rate_second_half": 0.9857752489331437
+    },
+    {
+      "dataset": "pems07",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.7794457274826789,
+      "prior_expert_weight_drop": 0.004001455240320112,
+      "prior_harm_rate_second_half": 0.9857752489331437
+    },
+    {
+      "dataset": "pems07",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9976905311778291,
+      "prior_expert_weight_drop": 0.004098861142055595,
+      "prior_harm_rate_second_half": 0.9900426742532006
+    },
+    {
+      "dataset": "pems07",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.0006170862345475162,
+      "prior_harm_rate_second_half": 0.9679943100995733
+    },
+    {
+      "dataset": "pems07",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.3545034642032333,
+      "prior_expert_weight_drop": 0.003437047343990342,
+      "prior_harm_rate_second_half": 0.9836415362731152
+    },
+    {
+      "dataset": "pems07",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.5046189376443417,
+      "prior_expert_weight_drop": 0.00610667575336319,
+      "prior_harm_rate_second_half": 0.9829302987197724
+    },
+    {
+      "dataset": "pems07",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.7517321016166282,
+      "prior_expert_weight_drop": 0.006578153503077451,
+      "prior_harm_rate_second_half": 0.9864864864864865
+    },
+    {
+      "dataset": "pems07",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9953810623556582,
+      "prior_expert_weight_drop": 0.008408625685512379,
+      "prior_harm_rate_second_half": 0.9921763869132291
+    },
+    {
+      "dataset": "pems07",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.0012974777899887949,
+      "prior_harm_rate_second_half": 0.968705547652916
+    },
+    {
+      "dataset": "pems07",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.3614318706697459,
+      "prior_expert_weight_drop": 0.003794072265057513,
+      "prior_harm_rate_second_half": 0.9829302987197724
+    },
+    {
+      "dataset": "pems07",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.5011547344110854,
+      "prior_expert_weight_drop": 0.004001834598470859,
+      "prior_harm_rate_second_half": 0.9886201991465149
+    },
+    {
+      "dataset": "pems07",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.7909930715935335,
+      "prior_expert_weight_drop": 0.005402132615889857,
+      "prior_harm_rate_second_half": 0.9907539118065434
+    },
+    {
+      "dataset": "pems07",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 1.0,
+      "prior_expert_weight_drop": 0.005506761506479621,
+      "prior_harm_rate_second_half": 0.9957325746799431
+    },
+    {
+      "dataset": "pems07",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.0004513109012974914,
+      "prior_harm_rate_second_half": 0.9871977240398293
+    },
+    {
+      "dataset": "pems07",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.3695150115473441,
+      "prior_expert_weight_drop": 0.0036907558712653207,
+      "prior_harm_rate_second_half": 0.9914651493598862
+    },
+    {
+      "dataset": "pems07",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.6027713625866051,
+      "prior_expert_weight_drop": 0.005387179347371637,
+      "prior_harm_rate_second_half": 0.9943100995732574
+    },
+    {
+      "dataset": "pems07",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.792147806004619,
+      "prior_expert_weight_drop": 0.005737226568971868,
+      "prior_harm_rate_second_half": 0.9971550497866287
+    },
+    {
+      "dataset": "pems07",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9976905311778291,
+      "prior_expert_weight_drop": 0.008100500356631422,
+      "prior_harm_rate_second_half": 0.9985775248933144
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": -0.00978851318359375,
+      "prior_harm_rate_second_half": 0.6943793911007026
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9267326732673268,
+      "prior_expert_weight_drop": 0.04871934652328491,
+      "prior_harm_rate_second_half": 0.9467213114754098
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9326732673267326,
+      "prior_expert_weight_drop": 0.05260521173477173,
+      "prior_harm_rate_second_half": 0.9420374707259953
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9405940594059405,
+      "prior_expert_weight_drop": 0.06360310316085815,
+      "prior_harm_rate_second_half": 0.9473067915690867
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 42,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9465346534653465,
+      "prior_expert_weight_drop": 0.05665910243988037,
+      "prior_harm_rate_second_half": 0.9455503512880562
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": -0.010092854499816895,
+      "prior_harm_rate_second_half": 0.49414519906323184
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9372937293729373,
+      "prior_expert_weight_drop": 0.03361421823501587,
+      "prior_harm_rate_second_half": 0.9268149882903981
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9353135313531353,
+      "prior_expert_weight_drop": 0.0359308123588562,
+      "prior_harm_rate_second_half": 0.9385245901639344
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9372937293729373,
+      "prior_expert_weight_drop": 0.020102083683013916,
+      "prior_harm_rate_second_half": 0.9069086651053864
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 3407,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9458745874587459,
+      "prior_expert_weight_drop": 0.025402188301086426,
+      "prior_harm_rate_second_half": 0.8946135831381733
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.0008727908134460449,
+      "prior_harm_rate_second_half": 0.6293911007025761
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9326732673267326,
+      "prior_expert_weight_drop": 0.06589999794960022,
+      "prior_harm_rate_second_half": 0.8846604215456675
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9353135313531353,
+      "prior_expert_weight_drop": 0.05872553586959839,
+      "prior_harm_rate_second_half": 0.8372365339578455
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9326732673267326,
+      "prior_expert_weight_drop": 0.06648287177085876,
+      "prior_harm_rate_second_half": 0.8711943793911007
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 101,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9471947194719472,
+      "prior_expert_weight_drop": 0.0646146833896637,
+      "prior_harm_rate_second_half": 0.8823185011709602
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": 0.011989444494247437,
+      "prior_harm_rate_second_half": 0.7781030444964872
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9392739273927393,
+      "prior_expert_weight_drop": 0.10694673657417297,
+      "prior_harm_rate_second_half": 0.9426229508196722
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.932013201320132,
+      "prior_expert_weight_drop": 0.09611272811889648,
+      "prior_harm_rate_second_half": 0.9437939110070258
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.93003300330033,
+      "prior_expert_weight_drop": 0.10913637280464172,
+      "prior_harm_rate_second_half": 0.955503512880562
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 2026,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9465346534653465,
+      "prior_expert_weight_drop": 0.09663459658622742,
+      "prior_harm_rate_second_half": 0.9432084309133489
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.0,
+      "actual_endpoint_change_fraction": 0.0,
+      "prior_expert_weight_drop": -0.04480177164077759,
+      "prior_harm_rate_second_half": 0.740632318501171
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.25,
+      "actual_endpoint_change_fraction": 0.9313531353135314,
+      "prior_expert_weight_drop": 0.025520265102386475,
+      "prior_harm_rate_second_half": 0.8969555035128806
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.5,
+      "actual_endpoint_change_fraction": 0.9405940594059405,
+      "prior_expert_weight_drop": 0.01943078637123108,
+      "prior_harm_rate_second_half": 0.8934426229508197
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 0.75,
+      "actual_endpoint_change_fraction": 0.9379537953795379,
+      "prior_expert_weight_drop": 0.021206289529800415,
+      "prior_harm_rate_second_half": 0.9010538641686182
+    },
+    {
+      "dataset": "metr_la",
+      "seed": 777,
+      "requested_endpoint_change_fraction": 1.0,
+      "actual_endpoint_change_fraction": 0.9465346534653465,
+      "prior_expert_weight_drop": 0.021114349365234375,
+      "prior_harm_rate_second_half": 0.8870023419203747
+    }
+  ]
+}

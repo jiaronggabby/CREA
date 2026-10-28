@@ -1,0 +1,147 @@
+schema: selective_prior_injection_final_v1
+mode: formal
+study_name: causal_relational_expert_aggregation_final_v1
+device: cuda
+data_root: data/processed
+output_root: reports/selective_prior_injection_final_v1
+lock_file: locks/selective_prior_injection_final_v1.json
+
+scope:
+  phase: frozen_method_paper_scale_experiment
+  prior: externally_specified_frozen_binary_inter_variable_connectivity
+  method_changes_after_seed42: forbidden
+
+split:
+  forecaster_train: 0.60
+  forecaster_validation: 0.10
+  gate_train: 0.10
+  gate_validation: 0.10
+  test: 0.10
+
+seeds:
+  pilot: [42]
+  formal: [42, 3407, 101, 2026, 777]
+
+randomness:
+  synthetic_namespace: 20260810
+  matched_control_namespace: 20260811
+  random_control_namespace: 20260812
+  window_sampling_namespace: 20260813
+
+method:
+  routing_mode: causal_hedge_aggregation
+  matched_controls: 20
+  control_exposure_count: 0
+  control_probe_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+  minimum_endpoint_change: 0.80
+  shared_validation_controls: []
+  rho: 0.8
+  delta_s: 0.0
+  delta_a_relative: 0.005
+  tau_a: 0.05
+  tau_s: 0.05
+  tau_w: 0.05
+  specificity_target: positive_excess_win_rate
+  specificity_chance: 0.5
+  gate_lambda: 0.3
+  specificity_gate_lambda: 0.3
+  gate_combiner: geometric_mean
+  gate_probability_calibration: validation_shrinkage_by_horizon
+  shared_control_loss_weight: 0.0
+  shared_validation_control_weight: 0.0
+  shared_distillation_weight: 0.0
+  shared_checkpoint_selection: none
+  shared_checkpoint_selection_split: none
+  shared_hard_preservation_gate_split: none
+  shared_loss: independent_frozen_A_and_R_experts_held_out_control_probes
+  gate_granularity: origin_by_horizon_by_node
+  causal_aggregation_experts: [all_only, prior_only, static_mix, loss_gate]
+  causal_feedback: delayed_until_target_enters_history
+  causal_eta_grid: [0.01, 0.03, 0.1, 0.3, 1.0]
+
+training:
+  batch_size: 64
+  micro_batch_size: 16
+  gradient_accumulation_steps: 4
+  epochs: 300
+  patience: 30
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  hidden: 64
+  layers: 2
+  heads: 4
+  dropout: 0.1
+  grad_clip: 1.0
+  num_workers: 0
+
+max_windows:
+  forecaster_train: 4096
+  forecaster_validation: null
+  gate_train: null
+  gate_validation: null
+  test: null
+
+prediction_storage:
+  prediction_dtype: float32
+  matched_dtype: float32
+  matched_compressed: true
+  required_splits: [gate_train, gate_validation, test]
+
+statistics:
+  primary_metric: MAE
+  primary_comparators: [static_mix, loss_gate]
+  ablation_comparators: [random_control_gate]
+  endpoint: dataset_equal_macro_relative_gain
+  full_test_origins: true
+  primary_horizons: [3, 6, 12]
+  seed42_no_method_selection: true
+  formal_seed_count: 5
+  paired_moving_block_bootstrap_replicates: 5000
+  minimum_relative_mae_improvement: 0.005
+  minimum_real_units_each_primary_comparison: 2
+  minimum_random_ablation_real_units: 2
+  minimum_headroom_recovery: 0.30
+  sham_activation_maximum: 0.10
+  tail_relative_noninferiority_margin: 0.01
+  synthetic_switching_min_auprc_margin: 0.05
+  synthetic_switching_min_valid_activation: 0.20
+  synthetic_switching_max_invalid_activation: 0.10
+  synthetic_corruption_min_activation_drop: 0.05
+  synthetic_corruption_monotonic_tolerance: 0.02
+
+experiments:
+  - id: E1
+    title: Causal Hedge relational aggregation on PEMS03
+    units:
+      - dataset: pems03
+        history: 12
+        max_horizon: 12
+        report_horizons: [3, 6, 12]
+  - id: E2
+    title: Causal Hedge relational aggregation on PEMS04
+    units:
+      - dataset: pems04
+        history: 12
+        max_horizon: 12
+        report_horizons: [3, 6, 12]
+  - id: E3
+    title: Causal Hedge relational aggregation on PEMS07
+    units:
+      - dataset: pems07
+        history: 12
+        max_horizon: 12
+        report_horizons: [3, 6, 12]
+  - id: E4
+    title: Causal Hedge relational aggregation on PEMS08
+    units:
+      - dataset: pems08
+        history: 12
+        max_horizon: 12
+        report_horizons: [3, 6, 12]
+  - id: E5
+    title: Causal Hedge relational aggregation on METR-LA
+    units:
+      - dataset: metr_la
+        history: 12
+        max_horizon: 12
+        report_horizons: [3, 6, 12]
