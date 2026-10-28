@@ -43,3 +43,23 @@ def test_robust_scale_is_finite_for_constant_targets():
     scale = robust_error_scale(np.ones((10, 3, 4)))
     assert scale.shape == (3, 4)
     assert np.isfinite(scale).all() and np.all(scale > 0)
+
+
+def test_relation_shift_correction_pairs_the_same_initialization():
+    from scripts.msn_shift_control import analyze
+
+    rows = []
+    for dataset in ['pems04', 'pems07', 'metr_la']:
+        for seed in range(5):
+            natural_drop = 0.001 * seed
+            for fraction in [0., .25, .5, .75, 1.]:
+                rows.append(dict(dataset=dataset, seed=seed,
+                    requested_endpoint_change_fraction=fraction,
+                    prior_expert_weight_drop=natural_drop + fraction * .02))
+    result = analyze(list(reversed(rows)))
+    assert len(result['rows']) == 12
+    for row in result['rows']:
+        np.testing.assert_allclose(row['mean_extra_drop_pp'],
+                                   2 * row['requested_fraction'], atol=1e-12)
+        np.testing.assert_allclose(row['sd_extra_drop_pp'], 0, atol=1e-12)
+        assert row['positive_percent'] == 100

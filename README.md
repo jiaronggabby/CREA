@@ -64,7 +64,7 @@ The five paper figures can be redrawn from the included compact plotting data, w
 python scripts/redraw_msn_figures.py
 ```
 
-The plotting script uses Arial, which must be installed locally. Figure 4 averages five initializations in 180 chronological bins and 220 consecutive-sensor-index bins; the effective-relational-reliance color scale stays at [0,1]. Figure 5 is a two-policy A/R diagnostic and reports differences between first- and second-half means.
+The plotting script uses Arial, which must be installed locally. Figure 4 averages five initializations in 180 chronological bins and 220 consecutive-sensor-index bins; the effective-relational-reliance color scale stays at [0,1]. Figure 5 is a two-policy A/R diagnostic. Its weight-drop panel subtracts the unperturbed first-to-second-half difference within each initialization; the horizontal axis reports the fraction of original non-self edges replaced. The paired correction can also be computed with `python scripts/msn_shift_control.py`.
 
 The saved-prediction extraction tools are `scripts/msn_relational_reliance.py` and `scripts/msn_plot_data.py`. Their path arguments allow regenerated predictions and trained checkpoints to be evaluated without retraining.
 
@@ -76,7 +76,7 @@ The adapters import the original model implementations from an explicitly suppli
 - `scripts/run_external_graph_baseline.py`: [DCRNN](https://github.com/liyaguang/DCRNN), [Graph WaveNet](https://github.com/nnzhan/Graph-WaveNet), [MTGNN](https://github.com/nnzhan/MTGNN), [AGCRN](https://github.com/LeiBAI/AGCRN), and [MegaCRN](https://github.com/deepkashiwa20/MegaCRN).
 - `scripts/run_gc_moe_closest_same_split.py`: [GC-MoE](https://github.com/Ahghaffari/gc_moe).
 
-Run an adapter with `--help` for its data, training, and upstream-path arguments. These are separate forecasting-system comparisons; the allocation comparisons use the same frozen A/R predictions.
+Run an adapter with `--help` for its data, training, and upstream-path arguments. Architectural references use 1,024 training and validation windows and three initializations; CREA experts use 4,096 training windows per epoch, full validation, and five initializations. These are separate forecasting-system comparisons; the allocation comparisons use the same frozen A/R predictions.
 
 ## Citation
 

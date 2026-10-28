@@ -61,7 +61,7 @@ def phase():
     ax.axvline(0,color=INK,linewidth=.6,linestyle='--')
     ax.grid(color='#E0E5EB',linewidth=.4)
     ax.set_xlabel('Relational gain over A (%)',labelpad=2)
-    ax.set_ylabel('Oracle gain over S (%)',labelpad=2)
+    ax.set_ylabel('Selection-oracle gain (%)',labelpad=2)
     ax.tick_params(length=2,pad=2)
     fig.legend(handles=handles,loc='upper center',bbox_to_anchor=(.5,1.0),ncol=3,
                frameon=False,columnspacing=.7,handletextpad=.25,labelspacing=.3)
@@ -132,13 +132,14 @@ def shift():
     for dataset,label,color,marker in [('pems04','PEMS04',BLUE,'o'),('pems07','PEMS07',TEAL,'D'),('metr_la','METR-LA',CORAL,'s')]:
         groups = [[r for r in rows if r['dataset']==dataset and r['requested_endpoint_change_fraction']==level] for level in (0,.25,.5,.75,1)]
         assert all(len(g)==5 for g in groups)
+        zero = {r['seed']:r['prior_expert_weight_drop'] for r in groups[0]}
         x = [100*np.mean([r['actual_endpoint_change_fraction'] for r in g]) for g in groups]
         for ax,key in zip(axes,['prior_expert_weight_drop','prior_harm_rate_second_half']):
-            v = [100*np.array([r[key] for r in g]) for g in groups]
+            v = [100*np.array([r[key]-(zero[r['seed']] if key=='prior_expert_weight_drop' else 0) for r in g]) for g in groups]
             ax.errorbar(x,[a.mean() for a in v],yerr=[a.std(ddof=1) for a in v],label=label,
                         color=color,marker=marker,markersize=3,linewidth=.8,capsize=1.5,elinewidth=.55)
     axes[0].axhline(0,color='#8792A0',linewidth=.6)
-    axes[0].set_ylabel('R-weight drop (pp)',labelpad=2)
+    axes[0].set_ylabel('Extra R-weight drop (pp)',labelpad=2)
     axes[1].set_ylabel('Origins with larger\nR MAE (%)',labelpad=2)
     for i,ax in enumerate(axes):
         ax.set_xticks([0,50,100])
@@ -146,7 +147,7 @@ def shift():
         ax.text(.5,-.25,chr(97+i),transform=ax.transAxes,ha='center',va='top',fontweight='bold',fontsize=9)
     fig.legend(*axes[0].get_legend_handles_labels(),loc='upper center',ncol=3,frameon=False,
                bbox_to_anchor=(.53,1.02),columnspacing=.6,handlelength=1,handletextpad=.3)
-    fig.text(.55,.015,'Realized endpoint changes (%)',ha='center',fontsize=9)
+    fig.text(.55,.015,'Replaced non-self edges (%)',ha='center',fontsize=9)
     save(fig,'fig_prior_shift.pdf')
 
 
