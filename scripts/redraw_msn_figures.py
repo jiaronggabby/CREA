@@ -2,6 +2,7 @@
 
 Author: Jia Rong. Quantitative figures reuse retained numerical results.
 """
+import argparse
 import json
 from pathlib import Path
 
@@ -15,8 +16,10 @@ from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm, Normalize, 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'paper/figures'
 DATA = ROOT/'results/final_v1_current/analysis'
-BLUE, TEAL, CORAL, INK = '#4C78A8', '#5AA6A6', '#D98373', '#253341'
-DIFF = LinearSegmentedColormap.from_list('difference',[BLUE,'#F7F7F5',CORAL])
+BLUE, TEAL, CORAL, INK = '#416F9D', '#478E8E', '#C97465', '#253341'
+DIFF = LinearSegmentedColormap.from_list('difference',[BLUE,'#F3F4F2',CORAL])
+RELIANCE = LinearSegmentedColormap.from_list(
+    'relational_reliance', ['#F4F8EF', '#C3DDC8', '#85B7BC', '#4A88A9', '#255F87'])
 
 
 def style():
@@ -79,10 +82,10 @@ def trust():
     for i,(h,ax) in enumerate(zip((3,6,12),axes)):
         counts = data[f'density_{h}'].T
         ax.pcolormesh(data[f'xedges_{h}'],data[f'yedges_{h}'],np.ma.masked_equal(counts,0),
-                      cmap='Blues',norm=LogNorm(1,max(counts.max(),2)),alpha=.34,rasterized=True)
+                      cmap='Blues',norm=LogNorm(1,max(counts.max(),2)),alpha=.50,rasterized=True)
         x,mean,sd = (data[f'{key}_{h}'] for key in ('centers','mean','sd'))
-        ax.fill_between(x,np.clip(mean-sd,0,1),np.clip(mean+sd,0,1),color=CORAL,alpha=.24,linewidth=0)
-        ax.plot(x,mean,color=CORAL,linewidth=1.1)
+        ax.fill_between(x,np.clip(mean-sd,0,1),np.clip(mean+sd,0,1),color=CORAL,alpha=.27,linewidth=0)
+        ax.plot(x,mean,color=CORAL,linewidth=1.2)
         ax.set_xlim(data[f'xedges_{h}'][[0,-1]])
         ax.set_ylim(0,1)
         ax.set_yticks([0,.5,1],['0','0.5','1'])
@@ -105,7 +108,7 @@ def atlas():
         step = 10**np.floor(np.log10(limit))
         limit = float(np.ceil(limit/step)*step)
         norm = Normalize(0,1) if i==1 else TwoSlopeNorm(vmin=-limit,vcenter=0,vmax=limit)
-        im = ax.imshow(values.T,origin='lower',aspect='auto',cmap='GnBu' if i==1 else DIFF,
+        im = ax.imshow(values.T,origin='lower',aspect='auto',cmap=RELIANCE if i==1 else DIFF,
                        norm=norm,interpolation='nearest',extent=(0,100,0,int(data['nodes'])-1),rasterized=True)
         ax.set_xticks([0,50,100])
         ax.get_xticklabels()[0].set_horizontalalignment('left')
@@ -162,5 +165,12 @@ def method():
 
 
 if __name__=='__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--figures', nargs='+',
+                        choices=['method', 'phase', 'trust', 'atlas', 'shift'],
+                        default=['method', 'phase', 'trust', 'atlas', 'shift'])
+    args = parser.parse_args()
     style()
-    method(); phase(); trust(); atlas(); shift()
+    renderers = dict(method=method, phase=phase, trust=trust, atlas=atlas, shift=shift)
+    for name in args.figures:
+        renderers[name]()
