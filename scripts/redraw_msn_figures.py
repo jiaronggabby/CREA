@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import font_manager
 from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm, Normalize, LogNorm
-from matplotlib.patches import FancyBboxPatch, Circle
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'paper/figures'
@@ -152,40 +151,13 @@ def shift():
 
 
 def method():
-    fig = plt.figure(figsize=(7,2.65))
-    ax = fig.add_axes([0,0,1,1]); ax.set_xlim(0,7); ax.set_ylim(0,2.65); ax.axis('off')
-    def box(x,y,w,h,text='',color='#F3F5F6',edge='#AAB6C0',size=9,bold=False):
-        ax.add_patch(FancyBboxPatch((x,y),w,h,boxstyle='round,pad=0.025,rounding_size=0.045',facecolor=color,edgecolor=edge,linewidth=.7))
-        if text: ax.text(x+w/2,y+h/2,text,ha='center',va='center',fontsize=size,fontweight='bold' if bold else 'normal',linespacing=1.25)
-    def arrow(x0,y0,x1,y1,color=INK,style='-'):
-        ax.annotate('',xy=(x1,y1),xytext=(x0,y0),arrowprops=dict(arrowstyle='-|>',lw=.85,color=color,linestyle=style,shrinkA=0,shrinkB=0))
-    panels = [(0.04,.78,'Issue-time\ninputs','#F0F3F3'),(.94,1.30,'Frozen structural\nexperts','#EAF3FC'),(2.36,1.65,'Allocation\npolicies','#FFF1E5'),(4.13,1.75,'Policy trust\naggregation','#F0F3F3'),(6.0,.95,'H-step\nforecast','#F0F3F3')]
-    for x,w,title,color in panels:
-        box(x,.76,w,1.79,color=color)
-        ax.text(x+w/2,2.43,title,ha='center',va='top',fontsize=10,fontweight='bold',linespacing=1.1)
-    box(.12,1.57,.62,.37,r'$X_u$'+'\nHistory',size=9)
-    box(.12,.95,.62,.37,r'$G$'+'\nRelation',size=9)
-    box(1.04,1.51,1.10,.49,'A  Unrestricted\n'+r'$p^{(A)}=f_A(X_u)$',color='white')
-    box(1.04,.91,1.10,.49,'R  Constrained\n'+r'$p^{(R)}=f_R(X_u;G)$',color='white')
-    arrow(.78,1.76,1.0,1.76); arrow(.80,1.61,.90,1.61); ax.plot([.90,.90],[1.61,1.2],color=INK,lw=.85); arrow(.90,1.2,1.0,1.2)
-    arrow(.78,1.05,1.0,1.05)
-    for y,text in [(1.98,'A, R  Direct forecasts'),(1.60,'S  Static Mix'),(1.22,'L  Loss Gate')]:
-        box(2.46,y-.14,1.45,.28,text,color='white')
-    ax.text(3.18,.86,'History + forecast differences',ha='center',fontsize=8)
-    arrow(2.16,1.79,2.42,1.79); arrow(2.16,1.19,2.42,1.19)
-    ax.text(5.005,1.90,r'$W_u=\{w^{(k)}_{u,h,n}\}$',ha='center',fontsize=10)
-    ax.text(5.005,1.57,r'$\hat y_{u,h,n}=\sum_k w^{(k)}_{u,h,n}p^{(k)}_{u,h,n}$',ha='center',fontsize=9)
-    ax.text(5.005,1.13,'Effective relational reliance',ha='center',fontsize=9)
-    ax.text(5.005,.88,r'$\alpha^{\mathrm{eff}}=w^{(R)}+\alpha_h^* w^{(S)}+\widetilde q\,w^{(L)}$',ha='center',fontsize=8.5)
-    arrow(4.04,1.70,4.14,1.70); arrow(5.91,1.70,6.00,1.70)
-    ax.text(6.475,1.72,r'$\hat Y_u$',ha='center',fontsize=14)
-    ax.text(6.475,1.35,'h = 3, 6, 12',ha='center',fontsize=9)
-    box(.04,.06,6.91,.47,color='#F2EBFA',edge='#B49BCF')
-    for x,text in [(.12,'Forecast issued\nat t'),(1.48,'Target observed\nat t + h'),(3.12,'Eligible losses\n'+r'$t+h\leq u$'),(4.87,'Revise trust\nbefore forecast u')]:
-        ax.text(x+.55,.30,text,ha='center',va='center',fontsize=9)
-    for x0,x1 in [(1.20,1.40),(2.66,2.97),(4.24,4.70)]: arrow(x0,.30,x1,.30)
-    arrow(5.73,.56,5.73,.76,color='#B54457',style='--')
-    ax.text(4.63,.63,'Matured outcomes update future trust',ha='center',fontsize=8,color='#A83A50')
+    # Keep the author-supplied artwork unchanged when regenerating the figures.
+    image = plt.imread(OUT/'fig_method_msn.png')
+    height, width = image.shape[:2]
+    fig = plt.figure(figsize=(7,7*height/width))
+    ax = fig.add_axes([0,0,1,1])
+    ax.imshow(image,interpolation='none',aspect='equal')
+    ax.axis('off')
     save(fig,'fig_method_msn.pdf')
 
 

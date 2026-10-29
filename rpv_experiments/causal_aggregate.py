@@ -1,9 +1,7 @@
-"""Run the locked v5 causal expert aggregation on a completed unit.
+"""Apply CREA delayed-feedback aggregation to completed forecast streams.
 
-This command is intentionally post-training.  It reads the already-frozen
-expert and baseline predictions, chooses Hedge rates on gate-validation, then
-evaluates the test split once with delayed feedback.  No test statistic is
-used to select an eta or an initial weight.
+Choose Hedge rates on gate-validation predictions, then combine the four
+fixed policies on the test stream using only matured forecast errors.
 """
 
 from __future__ import annotations
@@ -43,7 +41,7 @@ def aggregate_unit(run_root: Path) -> dict[str, object]:
         raise RuntimeError("Causal aggregation requires independent frozen A/R experts")
     contract = metrics.get("causal_aggregation_contract", {})
     if contract.get("feedback") != "delayed_until_target_enters_history":
-        raise RuntimeError("Missing locked delayed-feedback causal aggregation contract")
+        raise RuntimeError("Expected delayed feedback until each target enters history")
     if contract.get("eta_selection_split") != "gate_validation":
         raise RuntimeError("Causal aggregation eta must be selected on gate_validation")
     validation = {

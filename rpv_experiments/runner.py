@@ -1735,6 +1735,16 @@ def run_one(
                 ),
                 combined_probability=_horizon_slice(probability_matched, horizon),
             )
+    loss_gate_training_contract = {
+        "targets": ["q_loss"],
+        "gate_lambda": float(cfg["method"]["gate_lambda"]),
+        "specificity_lambda": 0.0,
+        "input_features": "local_global_horizon_plus_normalized_A_R_delta_and_magnitude",
+        "head_contract": "single_logit",
+        "combiner": "sigmoid",
+        "objective": "standardized_mixed_forecast_mse_plus_gate_lambda_bce_q_loss",
+        "probability_calibration": "validation_shrinkage_by_horizon" if is_v4 else "none",
+    }
     metrics.update(
         {
             "schema": _artifact_schema(cfg, "selective_prior_injection_metrics"),
@@ -1802,7 +1812,9 @@ def run_one(
                     ]
                 ),
             },
+            "loss_gate_training_contract": loss_gate_training_contract,
             "gate_training_contract": {
+                "applies_to": "matched_control_gate",
                 "targets": ["q_loss", "q_specificity"],
                 "q_matched_use": "diagnostic_only",
                 "specificity_lambda": float(
@@ -1915,7 +1927,9 @@ def run_one(
                     ]
                 ),
             },
+            "loss_gate_training_contract": loss_gate_training_contract,
             "gate_training_contract": {
+                "applies_to": "matched_control_gate",
                 "targets": ["q_loss", "q_specificity"],
                 "q_matched_use": "diagnostic_only",
                 "specificity_lambda": float(

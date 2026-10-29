@@ -41,7 +41,7 @@ crea final-efficiency
 python scripts/msn_initialization_summary.py
 ```
 
-The training command fits the two forecasters and the input-conditioned gate. `aggregate_crea.py` selects the update rates on gate-validation predictions and starts testing from the normalized weights used at the final validation forecast origin. Pending validation losses are discarded at this boundary; subsequent updates use only test-origin feedback as its targets arrive. Completed runs are reused with `--resume`. Use `--datasets pems04 --seed 42` on the training command to run one dataset and initialization; the full result summaries require all five datasets and seeds.
+The training command fits the two forecasters and the input-conditioned gate. It also computes structural-control diagnostics, which are separate from CREA's four allocation policies. `aggregate_crea.py` selects the update rates on gate-validation predictions and starts testing from the normalized weights used at the final validation forecast origin. Pending validation losses are discarded at this boundary; subsequent updates use only test-origin feedback as its targets arrive. Completed runs are reused with `--resume`. Use `--datasets pems04 --seed 42` on the training command to run one dataset and initialization; the full result summaries require all five datasets and seeds.
 
 Outputs are written to `reports/selective_prior_injection_final_v1/`. For a single completed run, aggregation can also be called directly:
 
@@ -65,7 +65,7 @@ The five paper figures can be redrawn from the included compact plotting data, w
 python scripts/redraw_msn_figures.py
 ```
 
-The plotting script uses Arial, which must be installed locally. Figure 4 averages five initializations in 180 chronological bins and 220 consecutive-sensor-index bins; the effective-relational-reliance color scale stays at [0,1]. Figure 5 is a two-policy A/R diagnostic. Its weight-drop panel subtracts the unperturbed first-to-second-half difference within each initialization; the horizontal axis reports the fraction of original non-self edges replaced. The paired correction can also be computed with `python scripts/msn_shift_control.py`.
+The method diagram is retained as the author-supplied artwork in `paper/figures/fig_method_msn.png`; the plotting script embeds it unchanged in a PDF. The numerical plots use Arial, which must be installed locally. Figure 4 averages five initializations in 180 chronological bins and 220 consecutive-sensor-index bins; the effective-relational-reliance color scale stays at [0,1]. Figure 5 is a two-policy A/R diagnostic. Its weight-drop panel subtracts the unperturbed first-to-second-half difference within each initialization; the horizontal axis reports the fraction of original non-self edges replaced. The paired correction can also be computed with `python scripts/msn_shift_control.py`.
 
 The saved-prediction extraction tools are `scripts/msn_relational_reliance.py` and `scripts/msn_plot_data.py`. Their path arguments allow regenerated predictions and trained checkpoints to be evaluated without retraining.
 

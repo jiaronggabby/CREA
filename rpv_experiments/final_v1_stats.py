@@ -16,6 +16,8 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from rpv_data.utils import PROCESSED_ROOT
+
 EXPECTED_DATASETS = {"pems03", "pems04", "pems07", "pems08", "metr_la"}
 EXPECTED_SEEDS = (42, 3407, 101, 2026, 777)
 METHODS = ("causal_hedge", "static_mix", "loss_gate", "all_only", "prior_only")
@@ -45,7 +47,7 @@ def _exact_raw_target(
     raw ground-truth zeros, so its mask must be formed from the raw series rather
     than from those rounded residuals.
     """
-    series_path = report_root.parent.parent / "data" / "processed" / str(metrics["dataset"]) / "series.npz"
+    series_path = PROCESSED_ROOT / str(metrics["dataset"]) / "series.npz"
     if not series_path.exists():
         raise FileNotFoundError(series_path)
     with np.load(series_path, allow_pickle=False) as archive:
