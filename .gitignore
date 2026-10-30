@@ -10,4 +10,5 @@ __pycache__/
 /tmp/
 /build/
 /dist/
-/paper/figures/
+/paper/
+/results/

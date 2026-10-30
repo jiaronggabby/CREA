@@ -17,7 +17,6 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=7"]
-figures = ["matplotlib>=3.7"]
 
 [project.scripts]
 crea = "crea:main"
